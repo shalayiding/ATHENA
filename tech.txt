@@ -1,0 +1,58 @@
+SQL and Database Skills:
+Explain the difference between INNER JOIN and LEFT JOIN.
+Write a SQL query to find the second highest salary in a table.
+What is normalization and denormalization? Provide examples.
+How do you optimize a slow-performing SQL query?
+Explain the difference between GROUP BY and ORDER BY in SQL.
+Write a query to calculate the average order value from a sales table.
+What is an index, and how does it improve database performance?
+How do you handle missing or null values in a database?
+Data Analysis and Manipulation:
+How do you clean and preprocess data for analysis?
+Explain the concept of outliers and how to deal with them.
+What is the purpose of the Pandas library in Python?
+How do you handle duplicate values in a dataset?
+Describe the process of data imputation and when it is necessary.
+What is the importance of data types in data analysis?
+Explain the difference between wide and long data formats.
+How would you perform data aggregation in Python?
+Statistical Concepts:
+What is the Central Limit Theorem, and why is it important in statistics?
+Explain the difference between correlation and causation.
+What is p-value, and how is it used in hypothesis testing?
+Describe the differences between parametric and non-parametric tests.
+What is the purpose of a confidence interval in statistics?
+How do you interpret a box plot?
+Explain the concept of regression analysis.
+Programming Skills:
+Why would you choose Python or R for data analysis?
+Write a Python code to read a CSV file into a DataFrame.
+How do you handle errors and exceptions in Python?
+What are lambda functions, and where would you use them?
+Explain the difference between a list and a tuple in Python.
+Write a function to calculate the mean of a list of numbers in Python.
+Data Visualization:
+Why is data visualization important in data analysis?
+Compare and contrast bar charts and histograms.
+How do you choose the appropriate chart type for different types of data?
+Explain the purpose of a heatmap in data visualization.
+How can color be used effectively in data visualization?
+Describe the principles of good dashboard design.
+Machine Learning (Basic Concepts):
+What is the difference between supervised and unsupervised learning?
+Explain overfitting and how to prevent it in a machine learning model.
+What is cross-validation, and why is it important?
+Describe the bias-variance tradeoff in machine learning.
+What are some common algorithms used for classification tasks?
+Case Study and Problem-Solving:
+Given a dataset, how would you approach a real-world data analysis problem?
+Walk through your process of exploring and understanding a new dataset.
+How would you approach a situation where there is missing or incomplete data?
+Describe a scenario where you had to make a decision based on incomplete information.
+How do you communicate your findings and insights to non-technical stakeholders?
+General Technical:
+What is version control, and how is it useful in data analysis projects?
+How do you stay updated with the latest trends and technologies in data analysis?
+Explain the importance of data security and privacy in data analysis.
+How would you handle a situation where you discover a data quality issue?
+Discuss a challenging problem you encountered in a previous data analysis project and how you solved it.
