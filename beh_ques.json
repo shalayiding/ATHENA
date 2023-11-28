@@ -1,0 +1,107 @@
+[
+  {
+    "categories": ["Cultural Fit"],
+    "question": "Can you describe a situation where you had to adapt to a significant change at work? How did you handle it?",
+    "difficulty": "Easy"
+  },
+  {
+    "categories": ["Cultural Fit"],
+    "question": "Tell us about a time when you worked in a team with diverse perspectives. What was your approach to collaboration?",
+    "difficulty": "Easy"
+  },
+  {
+    "categories": ["Cultural Fit"],
+    "question": "How do you align your personal values with the company's mission and values?",
+    "difficulty": "Easy"
+  },
+  {
+    "categories": ["Cultural Fit"],
+    "question": "What motivates you to perform at your best, and how do you think our company culture can support that?",
+    "difficulty": "Easy"
+  },
+  {
+    "categories": ["Cultural Fit"],
+    "question": "Can you give an example of how you contributed to a positive work environment in your last role?",
+    "difficulty": "Easy"
+  },
+  {
+    "categories": ["Explanations of Technical Concepts"],
+    "question": "Describe a complex data analysis concept to someone who has no background in the field.",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["Explanations of Technical Concepts"],
+    "question": "Have you ever had to simplify a technical solution to a non-technical audience? How did you ensure they understood?",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["Explanations of Technical Concepts"],
+    "question": "Tell us about a time when you had to learn a new piece of technology or analytical method to solve a problem. How did you approach it?",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["Prove Resume and Experience under Questioning"],
+    "question": "Discuss a challenging data analytics project you worked on. What was your role, and how did you contribute to its success?",
+    "difficulty": "Hard"
+  },
+  {
+    "categories": ["Prove Resume and Experience under Questioning"],
+    "question": "Share an experience where you analyzed data and found a significant problem. What impact did this have on your decision-making process?",
+    "difficulty": "Hard"
+  },
+  {
+    "categories": ["Prove Resume and Experience under Questioning"],
+    "question": "Describe a time when you had to make a quick decision based on incomplete data. What was the outcome?",
+    "difficulty": "Hard"
+  },
+  {
+    "categories": ["Prove Resume and Experience under Questioning"],
+    "question": "Give an example of how you prioritized your tasks when handling multiple data analytics projects.",
+    "difficulty": "Hard"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "Tell me about a goal you set and achieved. What steps did you take to reach it?",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "What interests you most about working at this company?",
+    "difficulty": "Easy"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "What attracts you to a career in Data Analytics?",
+    "difficulty": "Easy"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "Why are you the best fit for this role? Can you name your strengths and weaknesses?",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "Can you share an instance where you had to handle a conflict within your team? How did you resolve it?",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "Describe a situation where you had to work under a deadline. How did you manage your time and resources?",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "Tell us about a time when you had to go above and beyond your regular responsibilities to get the job done.",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "Give an example of a time when you received criticism for your work. How did you respond to the feedback?",
+    "difficulty": "Medium"
+  },
+  {
+    "categories": ["General Behavioral Questions"],
+    "question": "Describe a project where you had to use both quantitative and qualitative data. How did you integrate both types of data, and what was the result?",
+    "difficulty": "Hard"
+  }
+]
