@@ -11,10 +11,6 @@ endpoint_url = key.ENDPOINT_URL
 project_id = key.PROJECT_ID
 
 
-
-
-
-
 # given the api_key, endpoint url and project id to ask the vertex AI chatbot question and it return the json format
 def chatbison(API_KEY,ENDPOINT_URL,PROJECT_ID,userinput, chathistory,context):
     headers = {
