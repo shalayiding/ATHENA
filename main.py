@@ -1,15 +1,20 @@
 import discord
 import apikeys as key
-import vertexAPI as vai
 import MongodbHandler as MHD
+import vertex_rest_api
+
 
 intents = discord.Intents.default()
 intents.messages = True
 # User_Chat_History = {}
+
 client = discord.Client(intents=intents)
 user_database = MHD.MongodbHandler(key.MongoDB_uri,'Users','discord_users')
+vertexAI = vertex_rest_api.VertexAPI(key.API_KEY,f'https://us-central1-aiplatform.googleapis.com/v1/projects/{key.PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',key.PROJECT_ID)
+
 User_data = {}
 user_chat_history = []
+
 
 
 # bot_prompt = "you are discord bot, you name is VertexAI bot, you help to provide user with answer the current user :"
@@ -31,37 +36,18 @@ async def on_message(message):
         if message.author == client.user:
             return
 
-        # if isinstance(message.channel, discord.channel.DMChannel):
-        #     # message recive
-        #     print(f'Received DM from {message.author}: {message.content}')
+        if message.guild and message.content:
+            if user_database.check_user(message.author.id) != True:
+                user_database.Insert_one_User(message.author.display_name,message.author.id,[])
             
-        #     # put in to the vertexai 
-        #     chat_response = vai.chatbison(key.API_KEY,
-        #                           f'https://us-central1-aiplatform.googleapis.com/v1/projects/{key.PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',
-        #                           key.PROJECT_ID,
-        #                           message.content + "reply as much as you can.", chat_history," Your are discrod bot, name vertex AI")
-        #     print(f"Palm2 reply to {message.author.display_name}: waiting for rest api")
-        #     print(f"Palm2 reply: {chat_response['predictions'][0]['candidates'][0]['content']}")
+            # chatbison setup default for now
+            vertexAI.set_parameters()
+            context = bot_prompt + str(message.author.display_name)
+            examples =[]
+            chat_response = await vertexAI.chat_bison(context,examples,message.content,user_chat_history)
             
-        #     await message.channel.send(chat_response['predictions'][0]['candidates'][0]['content'])
-
-        # reply to guild message using reply
-        if message.guild:
-            if len(message.content) > 0:
-                # print(f'Received DM from {message.author}: {message.content}')
-                # put in to the vertexai 
-                # if message.author.id not in User_Chat_History:
-                #     User_Chat_History[message.author.id] = []
-                if user_database.check_user(message.author.id) != True:
-                    user_database.Insert_one_User(message.author.display_name,message.author.id,[])
-                chat_response = vai.chatbison(key.API_KEY,
-                                    f'https://us-central1-aiplatform.googleapis.com/v1/projects/{key.PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',
-                                    key.PROJECT_ID,
-                                    message.content,  user_chat_history,bot_prompt + message.author.display_name)
-                
-                # print(f"Palm2 reply to {message.author.display_name}: waiting for rest api")
-                print(f"Palm2 reply to {message.author.display_name}: {chat_response['predictions'][0]['candidates'][0]['content']}")
-                user_database.update_user_history(message.author.id,user_chat_history)
-                await message.reply(chat_response['predictions'][0]['candidates'][0]['content'])
+            print(f"Palm2 reply to {message.author.display_name}: {chat_response}")
+            user_database.update_user_history(message.author.id,user_chat_history)
+            await message.reply(chat_response)
 
 client.run(key.DC_BOT_TOKEN)
