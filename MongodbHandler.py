@@ -104,8 +104,8 @@ class MongodbHandler:
         try :
             user_doc = self.collection.find_one({'discord_id': discord_id})
             if user_doc and 'sections' in user_doc:
-                if not user_doc['sections'] :
-                    user_doc['sections'].append(self.section)            
+                # if not user_doc['sections'] :
+                user_doc['sections'].append(self.section)            
                     
                 user_doc['sections'][-1]['messages'].append(self.message)
                 query = {'discord_id':discord_id}

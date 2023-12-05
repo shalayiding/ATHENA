@@ -33,10 +33,17 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if client.user in message.mentions and message.author != client.user:
+        
+
+        new_section_command = message.content.endswith('!section')
+        if new_section_command and message.author != client.user:
+            user_database.create_one_section(message.author.id,message.author.display_name,'Bot')
+            await message.reply("New section is created history is clear.")
+        
         if message.author == client.user:
             return
-
-        if message.guild and message.content:
+        
+        if message.guild and message.content and not new_section_command and message.author != client.user:
             if user_database.check_user(message.author.id) != True:
                 user_database.create_one_User(message.author.display_name,message.author.id)
                 user_database.create_one_section(message.author.id,message.author.display_name,'Bot')
@@ -50,8 +57,6 @@ async def on_message(message):
             context = bot_prompt + str(message.author.display_name)
             examples =[]
             chat_response = await vertexAI.chat_bison(context,examples,message.content,user_chat_history)
-            
-            
             
             # section = user_database.create_one_section(message.author.id,message.author.display_name,'ChatBot')
             
