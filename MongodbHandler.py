@@ -60,7 +60,7 @@ class MongodbHandler:
         try :
             query = {'discord_id' : discord_id}
             result = self.collection.find_one(query)
-            return result['section'] if result else None
+            return result['sections'] if result['sections'] else None
         except Exception as e:
             print(e)
     
@@ -128,6 +128,53 @@ class MongodbHandler:
             self.collection.update_one(query,update)
         except Exception as e:
             print(e)
+    
+    
+    
+    
+    def mongodb_convert_message(self,messages):
+        """convert saved message in mongodb to the rest api format for vertex ai
+
+        Args:
+            messages (_type_): byjson
+
+        Returns:
+            _byjson_: converted_messages 
+        """
+        converted_messages = []
+        for message in messages:
+            if message.get('discord_input'):
+                converted_messages.append({
+                    'author':'user',
+                    'content':message['discord_input']
+                })
+            if message.get('bot_message'):
+                converted_messages.append({
+                    'author':'bot',
+                    'content':message['bot_message']
+                })
+        return converted_messages
+    
+    def find_latest_message(self,discord_id):
+        """find the latest messages and convert it to the rest api message for vertexi
+
+        Args:
+            discord_id (id type): _description_
+
+        Returns:
+            _type_: rest api byjson format for chat history
+        """
+        if self.find_section(discord_id) == None:
+            return None
+        else:
+            target_section = self.find_section(discord_id)
+            target_message = target_section[-1]['messages']
+            converted_message = self.mongodb_convert_message(target_message)
+            return converted_message
+    
+    
+    
+    
     
     
 # db = MongodbHandler(key.MongoDB_uri,'Users','discord_users')
