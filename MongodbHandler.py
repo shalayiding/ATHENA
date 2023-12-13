@@ -85,6 +85,7 @@ class MongodbHandler:
             "discord_id":discord_id,
             "bot_name":bot_name,
             "section_id": f"{discord_id}-{timestamp}",
+            "added_prompt": [],
             "messages":[]
         }
         
@@ -171,6 +172,14 @@ class MongodbHandler:
             target_message = target_section[-1]['messages']
             converted_message = self.mongodb_convert_message(target_message)
             return converted_message
+    
+    
+    # possible addtioanl information for the bot 
+    
+    
+    
+    
+    
     
     
     
