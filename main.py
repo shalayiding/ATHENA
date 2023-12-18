@@ -6,7 +6,7 @@ import json
 import aiohttp
 import io
 import PyPDF2
-
+import re
 
 
 intents = discord.Intents.default()
@@ -40,7 +40,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    
+    append_message = ""
 
     # if author is bot it self return 
     if message.author == client.user:
@@ -74,8 +74,7 @@ async def on_message(message):
                                 page = len(pdf_reader.pages)
                                 page_obj = pdf_reader.pages[0]
                                 text = page_obj.extract_text()
-                                additional_message[message.author.id] = "This is my pdf file : " + text  
-                                print(additional_message.keys())
+                                append_message = "This is my pdf file : " + text  
         
             
         
@@ -84,29 +83,36 @@ async def on_message(message):
         
         
         if message.guild and message.content and not new_section_command and message.author != client.user:
-            user_chat_history = user_database.find_latest_message(message.author.id)
+            
             if user_database.check_user(message.author.id) != True:
                 user_database.create_one_User(message.author.display_name,message.author.id)
                 user_database.create_one_section(message.author.id,message.author.display_name,'Bot')
-                  
+                
+                
+                
+            user_chat_history = user_database.find_latest_message(message.author.id)
+            user_chat_history = user_chat_history[2:]      
             
-            # print(user_chat_history)
+            print(user_chat_history)
       
             # chatbison setup default for now
             vertexAI.set_parameters(0,0,0.95,40)
             context = "you are currently talking with user called : " + str(message.author.display_name) + bot_prompt 
             examples =pre_train_set['examples']
-            if message.author.id in additional_message:
-                append_message = additional_message[message.author.id]
-            else:
-                append_message = ""
+                
             
-            chat_response = await vertexAI.chat_bison(context,examples,message.content + append_message,user_chat_history)
+            
+            pattern = r"<@\d+>"
+            user_pure_input = re.sub(pattern,'',message.content)
+            print(user_pure_input + append_message)
+            chat_response = await vertexAI.chat_bison(context,[],user_pure_input + append_message,user_chat_history)
+            
+            
             
             # section = user_database.create_one_section(message.author.id,message.author.display_name,'ChatBot')
             
             # set a timestamp for bot message return and insert into section
-            user_database.insert_user_message(message.content+append_message)
+            user_database.insert_user_message(user_pure_input+append_message)
             user_database.insert_bot_message(chat_response)
             user_database.insert_message(message.author.id)
             
