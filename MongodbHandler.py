@@ -168,6 +168,7 @@ class MongodbHandler:
         if self.find_section(discord_id) == None:
             return None
         else:
+            
             target_section = self.find_section(discord_id)
             target_message = target_section[-1]['messages']
             converted_message = self.mongodb_convert_message(target_message)

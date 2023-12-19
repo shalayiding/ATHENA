@@ -74,6 +74,7 @@ async def on_message(message):
                                 page = len(pdf_reader.pages)
                                 page_obj = pdf_reader.pages[0]
                                 text = page_obj.extract_text()
+                                text = text.replace('\n','')
                                 append_message = "This is my pdf file : " + text  
         
             
@@ -91,7 +92,7 @@ async def on_message(message):
                 
                 
             user_chat_history = user_database.find_latest_message(message.author.id)
-            user_chat_history = user_chat_history[2:]      
+             
             
             print(user_chat_history)
       
@@ -104,7 +105,7 @@ async def on_message(message):
             
             pattern = r"<@\d+>"
             user_pure_input = re.sub(pattern,'',message.content)
-            print(user_pure_input + append_message)
+            print(append_message)
             chat_response = await vertexAI.chat_bison(context,[],user_pure_input + append_message,user_chat_history)
             
             
