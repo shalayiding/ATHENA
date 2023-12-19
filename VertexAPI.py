@@ -1,7 +1,4 @@
-import requests
-import apikeys as key
 import aiohttp
-import asyncio
 
 
 class VertexAPI:
@@ -89,17 +86,4 @@ class VertexAPI:
             return "The has been error with REST API call: "+ str(e) + "statues code of the api is :"+ str(response.status)
         
         
-        
-        
-# async def test_chat_bison():
-#     chat_history = []
-#     while True:
-        
-#         userinput = input("Your:")
-#         chatai = VertexAPI(key.API_KEY,f'https://us-central1-aiplatform.googleapis.com/v1/projects/{key.PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',key.PROJECT_ID)
-#         chatai.set_parameters()
-#         chat_response = await chatai.chat_bison("You are discord bot, name vertex AI",[],userinput,chat_history)
-#         print("Bot:" + chat_response)
-
-# asyncio.run(test_chat_bison())
         

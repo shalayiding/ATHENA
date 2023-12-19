@@ -1,7 +1,6 @@
 # handle different mongodb event  
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-import apikeys as key
 from datetime import datetime
 
 class MongodbHandler:
@@ -177,20 +176,3 @@ class MongodbHandler:
     
     # possible addtioanl information for the bot 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-# db = MongodbHandler(key.MongoDB_uri,'Users','discord_users')
-
-# db.create_one_User('aken',discord_id='123')
-# section = db.create_one_section('123','aken','vertexai')
-# db.insert_message('123','who are you ?','I am good',section)
-# db.insert_message('123','this is next chat','reqwrI am good',section)
-# db.insert_message('123','this is third chat','I am gorewrwerod',section)
