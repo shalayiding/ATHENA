@@ -1,5 +1,5 @@
 import discord
-import apikeys as key
+import loadenv as envkeys
 import MongodbHandler as MHD
 import VertexAPI as vertex_rest_api
 import json
@@ -14,8 +14,8 @@ intents.messages = True
 # User_Chat_History = {}
 
 client = discord.Client(intents=intents)
-user_database = MHD.MongodbHandler(key.MongoDB_uri,'Users','discord_users')
-vertexAI = vertex_rest_api.VertexAPI(key.API_KEY,f'https://us-central1-aiplatform.googleapis.com/v1/projects/{key.PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',key.PROJECT_ID)
+user_database = MHD.MongodbHandler(envkeys.MongoDB_uri,'Users','discord_users')
+vertexAI = vertex_rest_api.VertexAPI(envkeys.VERTEX_AI_API_KEY,f'https://us-central1-aiplatform.googleapis.com/v1/projects/{envkeys.VERTEX_AI_PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',envkeys.VERTEX_AI_PROJECT_ID)
 
 User_data = {}
 
@@ -126,4 +126,4 @@ async def on_message(message):
             else:
                 await message.reply(chat_response)
 
-client.run(key.DC_BOT_TOKEN)
+client.run(envkeys.DC_BOT_TOKEN)
