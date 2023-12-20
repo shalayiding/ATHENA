@@ -11,15 +11,19 @@ class VertexAPI:
             project_id (_type_): _description_
         """
     
-        self.API_KEY = api_key
-        self.ENDPOINT_URL = endpoint_url
-        self.PROJECT_ID = project_id
+        self.set_header(api_key,endpoint_url,project_id)
+    
+    
+    def set_header(self, API_KEY,ENDPOINT_URL,PROJECT_ID):
+        self.API_KEY = API_KEY
+        self.ENDPOINT_URL = ENDPOINT_URL
+        self.PROJECT_ID = PROJECT_ID
         self.HEADER = {
         'Authorization': 'Bearer {}'.format(self.API_KEY),
         'Content-Type': 'application/json; charset=utf-8'
-        }
+    }
     
-        
+    
     def set_parameters(self,temperature=0,maxOutputTokens=0,topP=0.95,topK=40):
         """set parameters value for the rest api if nothing comes in go with default value 
 
