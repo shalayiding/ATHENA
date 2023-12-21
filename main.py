@@ -41,8 +41,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     append_message = ""
-    
-    vertexAI.set_header(envkeys.VERTEX_AI_API_KEY,f'https://us-central1-aiplatform.googleapis.com/v1/projects/{envkeys.VERTEX_AI_PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',envkeys.VERTEX_AI_PROJECT_ID)
+    new_key = envkeys.VERTEX_AI_API_KEY
+    if envkeys.get_gcloud_access_token() != None:
+        new_key = envkeys.get_gcloud_access_token()
+
+    vertexAI.set_header(new_key,f'https://us-central1-aiplatform.googleapis.com/v1/projects/{envkeys.VERTEX_AI_PROJECT_ID}/locations/us-central1/publishers/google/models/chat-bison:predict',envkeys.VERTEX_AI_PROJECT_ID)
     # if author is bot it self return 
     if message.author == client.user:
         return
