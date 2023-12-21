@@ -5,6 +5,7 @@ import subprocess
 def get_gcloud_access_token():
     try:
         access_token = subprocess.check_output(['gcloud', 'auth', 'print-access-token'], text=True).strip()
+        print("key is here")
         return access_token
     except FileNotFoundError:
         print("Failed to obtain access token:")
